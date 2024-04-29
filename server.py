@@ -11,7 +11,7 @@ subprocess.Popen(['python3', '-m', 'fastchat.serve.openai_api_server', '--host',
 # subprocess.Popen(['python3', '-m', 'fastchat.serve.gradio_web_server', '--host', '0.0.0.0'])
 
 # Start ngrok
-ngrok_process = subprocess.Popen(['ngrok', 'http', '8002', '--auth', NGROK_AUTH_TOKEN], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+ngrok_process = subprocess.Popen(['ngrok', 'http', '8888', '--auth', NGROK_AUTH_TOKEN], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 # Read the ngrok public URL
 for line in ngrok_process.stdout:
