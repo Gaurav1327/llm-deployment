@@ -7,8 +7,8 @@ NGROK_AUTH_TOKEN = os.environ.get('NGROK_AUTH_TOKEN', '23baKlcVFtF3OkJtNrD6xExrY
 # Start the FastChat services
 subprocess.Popen(['python3', '-m', 'fastchat.serve.controller', '--host', '0.0.0.0'])
 subprocess.Popen(['python3', '-m', 'fastchat.serve.model_worker', '--model-path', '../chatglm2-6b', '--host', '0.0.0.0'])
-subprocess.Popen(['python3', '-m', 'fastchat.serve.openai_api_server', '--host', '0.0.0.0'])
-subprocess.Popen(['python3', '-m', 'fastchat.serve.gradio_web_server', '--host', '0.0.0.0'])
+subprocess.Popen(['python3', '-m', 'fastchat.serve.openai_api_server', '--host', '0.0.0.0', '--port', '8888'])
+# subprocess.Popen(['python3', '-m', 'fastchat.serve.gradio_web_server', '--host', '0.0.0.0'])
 
 # Start ngrok
 ngrok_process = subprocess.Popen(['ngrok', 'http', '8002', '--auth', NGROK_AUTH_TOKEN], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
