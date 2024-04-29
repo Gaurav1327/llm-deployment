@@ -1,0 +1,36 @@
+FROM nvidia/cuda:11.3.1-cudnn8-devel-ubuntu20.04
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    git \
+    python3 \
+    python3-pip \
+    tensorrt \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Git LFS
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
+RUN apt-get install git-lfs
+
+# Install Python dependencies
+COPY requirements.txt .
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+# Download the model
+RUN git lfs install
+RUN git clone https://huggingface.co/meta-llama/Llama-2-7b-chat-hf
+
+# Set the working directory
+WORKDIR /Llama-2-7b-chat-hf
+
+# Copy the server script
+COPY server.py .
+
+# Expose the necessary ports
+EXPOSE 8000
+EXPOSE 8001
+EXPOSE 8002
+
+# Start the FastChat services
+CMD ["python", "server.py"]

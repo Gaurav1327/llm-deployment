@@ -1,0 +1,15 @@
+version: '3'
+services:
+  fastchat-api:
+    build: .
+    ports:
+      - "8000-8002:8000-8002"
+    environment:
+      - NGROK_AUTH_TOKEN=your-ngrok-auth-token
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
