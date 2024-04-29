@@ -1,6 +1,5 @@
 import os
 import subprocess
-import openai
 
 # Load environment variables
 NGROK_AUTH_TOKEN = os.environ.get('NGROK_AUTH_TOKEN', 'your-ngrok-auth-token')
