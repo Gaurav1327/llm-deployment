@@ -2,11 +2,11 @@ import os
 import subprocess
 
 # Load environment variables
-NGROK_AUTH_TOKEN = os.environ.get('NGROK_AUTH_TOKEN', 'your-ngrok-auth-token')
+NGROK_AUTH_TOKEN = os.environ.get('NGROK_AUTH_TOKEN', '23baKlcVFtF3OkJtNrD6xExrYlI_7ZVM8X8z3bG6s3Zvt3Jgc')
 
 # Start the FastChat services
 subprocess.Popen(['python', '-m', 'fastchat.serve.controller', '--host', '0.0.0.0'])
-subprocess.Popen(['python', '-m', 'fastchat.serve.model_worker', '--model-path', '/Llama-2-7b-chat-hf', '--host', '0.0.0.0'])
+subprocess.Popen(['python', '-m', 'fastchat.serve.model_worker', '--model-path', '../chatglm2-6b', '--host', '0.0.0.0'])
 subprocess.Popen(['python', '-m', 'fastchat.serve.openai_api_server', '--host', '0.0.0.0'])
 subprocess.Popen(['python', '-m', 'fastchat.serve.gradio_web_server', '--host', '0.0.0.0'])
 
