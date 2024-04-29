@@ -4,6 +4,8 @@ services:
     build: .
     ports:
       - "8000-8002:8000-8002"
+    environment:
+      - NGROK_AUTH_TOKEN=23baKlcVFtF3OkJtNrD6xExrYlI_7ZVM8X8z3bG6s3Zvt3Jgc
     deploy:
       resources:
         reservations:
