@@ -4,4 +4,3 @@ torch==2.0.0
 transformers
 gradio
 accelerate
-ngrok
